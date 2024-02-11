@@ -3,25 +3,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 
-class Program
-{
-    public class JournelEntry
-    {
-        //This first class saves each jourel entry. It has 3 parts, the current date
-        //the promt for the entry and the response to the promt
-        // its only function is to display the entry
-
-        public string _date;
-        public string _promt;
-        public string _response;
-        public void Display()
-        {
-            Console.WriteLine($"Date: {_date} - Promt: {_promt} \n {_response}");
-        }
-
-
-    }
-    public class Journel
+public class Journel
     {
         /*This class makes a list of all the entrie that have been written. It has 3 functions, one diplpays
         the entries, another saves the journel to a text file, and the last reads a text file and loads it inro first
@@ -73,6 +55,25 @@ class Program
             }
         }
     }
+
+public class JournelEntry
+    {
+        //This first class saves each jourel entry. It has 3 parts, the current date
+        //the promt for the entry and the response to the promt
+        // its only function is to display the entry
+
+        public string _date;
+        public string _promt;
+        public string _response;
+        public void Display()
+        {
+            Console.WriteLine($"Date: {_date} - Promt: {_promt} \n {_response}");
+        }
+
+
+    }
+class Program
+{ 
     static void Main(string[] args)
     {
         List<string> journel_prompts = new List<string>
