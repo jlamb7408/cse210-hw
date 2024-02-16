@@ -30,6 +30,7 @@ public class Fraction
     {
         return _bottom;
     }
+    
     public void SetTop(int top)
     {
         _top = top;
@@ -38,6 +39,7 @@ public class Fraction
     {
         _bottom = bottom;
     }
+
     public string GetFractionString()
     {
         string fraction = _top + "/" + _bottom;
@@ -49,3 +51,5 @@ public class Fraction
         return FractionValue;
     }
 }
+
+
