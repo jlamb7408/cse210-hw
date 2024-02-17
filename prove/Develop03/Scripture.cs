@@ -53,45 +53,4 @@ public class Scripture
         string reference = _reference.GetReference();
         return reference;
     }
-    public void GetScripture()
-    {
-        List<string> WordsToDisplay = new List<string>();
-        List<string> BlankWords = new List<string>();
-        string fullReference = _reference.GetReference();
-
-        foreach(Word word in _words)
-        {
-            string FullWord = word.GetFullWord();
-            WordsToDisplay.Add(FullWord);
-        }
-        foreach(Word word in _words)
-        {
-            string BlankWord = word.GetBlankWord();
-            BlankWords.Add(BlankWord);
-        }
-    
-        
-        bool areEqual = false;
-        int i = 0;
-        while (!areEqual && i < WordsToDisplay.Count && i < BlankWords.Count)
-        {
-            Console.WriteLine('o');
-            Console.Clear();
-            Console.WriteLine(fullReference);
-            foreach(string word in WordsToDisplay)
-            {
-                Console.Write($"{word} ");
-            }
-            
-            Console.WriteLine("Type 'quit' to exit or hit ENTER to continue: ");
-            string quit = Console.ReadLine();
-            
-            if(quit == "quit")
-            {
-                break;
-            }
-            
-        }
-
-    }
 }
