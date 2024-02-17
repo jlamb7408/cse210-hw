@@ -62,7 +62,7 @@ class Program
             while (true)
             {   
                 //The Console is cleared, the reference is displayed in full, and the text is displayed word by word
-                Console.Clear();
+                //*Console.Clear();* This method will not work on my computer for some reason, Bro Perish  said I am good to just comment it out 
                 Console.WriteLine(fullReference);
                 foreach(string word in WordsToDisplay)
                 {
