@@ -61,7 +61,9 @@ class Program
                     {
                         Console.WriteLine("How many times will this goal be repeatead?");
                         int timesRepeated = int.Parse(Console.ReadLine());
-                        newGoal = new ChecklistGoal(goalName, goalDescribtion, goalPoints, timesRepeated);
+                        Console.WriteLine("What is the bonus for completed this goal? ");
+                        int bonus = int.Parse(Console.ReadLine());
+                        newGoal = new ChecklistGoal(goalName, goalDescribtion, goalPoints, timesRepeated, bonus);
                     }
                     OpenedTracker.AddGoal(newGoal);     //The goal that was created is added to the Tracker
                 }

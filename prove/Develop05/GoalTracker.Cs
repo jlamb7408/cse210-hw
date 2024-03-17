@@ -234,7 +234,7 @@ class GoalTracker
                 }
                 else if(parts[0] == "CG")
                 {
-                    loadedGoal = new ChecklistGoal(parts[1], parts[2], int.Parse(parts[3]), bool.Parse(parts[4]), int.Parse(parts[5]), int.Parse(parts[6]));
+                    loadedGoal = new ChecklistGoal(parts[1], parts[2], int.Parse(parts[3]), bool.Parse(parts[4]), int.Parse(parts[5]), int.Parse(parts[6]), int.Parse(parts[7]));
                 }
 
                 loadedGoals.Add(loadedGoal);

@@ -2,17 +2,20 @@ class ChecklistGoal : Goal
 {
     private int _timesRepeated;
     private int _timesCompleted = 0;
+    private int _bonusPoints;
 
     //There are two constructors, The first constructor is used when the goal is being made. It does not take in a times completed value
-    public ChecklistGoal(string name, string description, int points, int timesRepeated) : base(name, description, points)
+    public ChecklistGoal(string name, string description, int points, int timesRepeated, int bonus) : base(name, description, points)
     {
         _timesRepeated = timesRepeated;
+        _bonusPoints = bonus;
     }
     //The second constructor is used when a goal is loaded in. It does take a times completed value and a boolean value for completion
-    public ChecklistGoal(string name, string description, int points, bool completed, int timesRepeated, int timesCompleted) : base(name, description, points, completed)
+    public ChecklistGoal(string name, string description, int points, bool completed, int timesRepeated, int timesCompleted, int bonus) : base(name, description, points, completed)
     {
         _timesRepeated = timesRepeated;
         _timesCompleted = timesCompleted;
+        _bonusPoints = bonus;
     }
    
    //This method is ovveriden to dislay the progress on this goal
@@ -29,7 +32,7 @@ class ChecklistGoal : Goal
     //This method prepares the variables of the goal into a single string to be saved to a txt file
     public override string GetStringRepresentation()
     {
-        return $"CG| {_name}| {_description}| {_points}| {_completed}| {_timesRepeated}| {_timesCompleted}";
+        return $"CG| {_name}| {_description}| {_points}| {_completed}| {_timesRepeated}| {_timesCompleted}| {_bonusPoints}";
     }
 
     //This goal is only completed when all the times repeated are complete
@@ -46,14 +49,14 @@ class ChecklistGoal : Goal
             _timesCompleted = _timesCompleted + 1;
             if(_timesCompleted == _timesRepeated)
             {
-                Console.WriteLine($"You have completed this goal! You will be rewarded {_points} points\n");
+                Console.WriteLine($"You have completed this goal! You will be rewarded {_points} points + {_bonusPoints} points for completion\n");
                 _completed = true;
-                return _points;
+                return _points + _bonusPoints;
             }
             else
             {
-                Console.WriteLine($"Progress on goal: {_timesCompleted}/{_timesRepeated}");
-                return 0;
+                Console.WriteLine($"Progress on goal: {_timesCompleted}/{_timesRepeated}. You are rewarded {_points} points for your progress.");
+                return _points;
             }
         }
     }
