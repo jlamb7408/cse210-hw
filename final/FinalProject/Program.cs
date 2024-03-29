@@ -8,6 +8,7 @@ class Program
         while(true)
         {
             //Main menu displays
+            //For the first checkpoint, only option 3 works, and in option 3, only Hangman and Flashcard works
             Console.WriteLine("Menu options:");
             Console.WriteLine(" 1. Show Vocab Words and Phrases");
             Console.WriteLine(" 2. Show Activites");
