@@ -11,7 +11,9 @@ class PointTracker
         private List<Item> _invenntory = new List<Item>{new Weapon("Fists", 1), new Armor("Old Shirt", 1)};
         private string _fileName = "";
         public PointTracker()
+
         {
+                //all of these items create the store where the user can buy items
                 Weapon Gauntlet = new Weapon("Thanos's Gauntlet", 100, 500);
                 Weapon LightSaber = new Weapon("Obiwan's Lightsaber", 50, 250);
                 Weapon LinkSword = new Weapon("The Master Sword", 25, 100);
@@ -25,7 +27,9 @@ class PointTracker
                 _store = Store;
         }
         private void StoreReset()
+        //The store items are reset to all being in stock
         {
+                //There is a point where the store might need to be reset if a user loads a save file with less progress than the current open file
                 Weapon Gauntlet = new Weapon("Thanos's Gauntlet", 100, 500);
                 Weapon LightSaber = new Weapon("Obiwan's Lightsaber", 50, 250);
                 Weapon LinkSword = new Weapon("The Master Sword", 25, 100);
@@ -39,11 +43,13 @@ class PointTracker
                 _store = Store;
         }
         public void DisplayCharacter()
+        //The equiped items of the character are displayed
         {
                 Console.WriteLine($"Equpied weapon: {_equipedWeapon.GetName()}");
                 Console.WriteLine($"Equpied armor: {_equipedArmor.GetName()}");
         }
         public void BuyItems()
+        //The store is displayed and the suer can choose an item to buy if they have enough points
         {
                 Console.Clear();
                 Console.WriteLine("Welcome to the item shop! Our Items for sale:");
@@ -105,6 +111,7 @@ class PointTracker
                 
         }
         public void VeiwInentory()
+        //A user is taken to a menus where hthey can change their name, veiw their items, and equip items
         {
                 Console.Clear();
                 Console.WriteLine($"Welcome {_characterName}");
@@ -224,10 +231,12 @@ class PointTracker
 
         } 
         public void AddPoints(int points)
+        //points are added to their total poitns every time they complete an activity
         {
                 _points = _points + points;
         }
         public void Save()
+        //the user cna save their progress to a tect file
         {
                 Console.Clear();
                 bool ChangeFileName = true;
@@ -266,6 +275,7 @@ class PointTracker
                         Console.WriteLine("Your progross has been saved!\n");
         }
         public void Load()
+        //The user can load their progress from a text file
         {
                 Console.Clear();
                 List<Item> loadedItems = new List<Item>();
@@ -312,6 +322,8 @@ class PointTracker
                 }
                 _invenntory = loadedItems;
 
+                //Here I make sure that all the items in the users inventory do not also show up in the store so that items can only be bought once
+                // I also make sure that if the user loads a file where they havent bought the item yet, it will restock
                 StoreReset();
                 List<string> inventoryNames = new List<string>();
                 foreach(Item item in _invenntory)

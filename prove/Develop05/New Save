@@ -1,0 +1,34 @@
+v2.0 raw
+1004    #stores "4" in 
+110A
+3001 #display J
+1101
+3001 #display A
+1103
+3001 #display C
+110F
+3001 #display O
+1102
+3001 #display B
+1202
+1100
+3021 #display space
+110C
+3001 #display L
+1101
+3001 #display A
+110D
+3001 #display M
+1102
+3001 #display B
+1100
+3021 #display space
+
+1002
+1103
+3001 #display #
+1003
+1101
+3001 #di
+1105
+3001 #display 5

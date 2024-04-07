@@ -1,3 +1,4 @@
+//Items were added to give the program more gamification. They have no real functioality other than the user can collect all 9 items in the program
 class Item
 {
     private string _name;

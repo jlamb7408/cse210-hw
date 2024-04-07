@@ -1,5 +1,6 @@
 class Activity
 {
+    //The parant class has three classes that inherit from it. FlashCard, Matching, and Hangman
     private string _name;
     private string _description;
     private int _points; 
@@ -12,18 +13,22 @@ class Activity
         _vocabWords = vocabWords;
     }
     public virtual int Run()
+    //This class will run what each activity is supposed to do. Since each activity runs differntly, it is virtual.
     {
         return _points;
     }
     public void DisplayActivity()
+    //This displays the name and descirption of an activty
     {
         Console.WriteLine(_name + ": " + _description);
     }
     public string GetName()
+    //Returns the name of an activity
     {
         return _name;
     }
     public void DisplayWords()
+    //Displays the vocab words with their deffitions
     {
         foreach(Vocab w in _vocabWords)
         {
@@ -31,6 +36,7 @@ class Activity
         }
     }
     protected Vocab GetAVocabWord()
+    //returns a random vocab word from the list
     {
         Random random = new Random();
         int randomNumber = random.Next(0, _vocabWords.Count());
@@ -39,6 +45,7 @@ class Activity
     }
     public List<Vocab> GetAllWords()
     {
+        //returns a list of all the words. Since lists are stored as references, I made it return a different list as it will be alted 
         List<Vocab> vocabWords = new List<Vocab>();
         foreach(Vocab word in _vocabWords)
         {
@@ -47,7 +54,9 @@ class Activity
         return vocabWords;
     }
     public void ChangeWords()
+    //The change words method has a menu where the user can decide to add or remove a single word or change the words entirely
     {
+
         Console.Clear();
         Console.WriteLine("Change Words options:");
         Console.WriteLine(" 1. Add a single word");

@@ -5,6 +5,8 @@ class Hangman : Activity
     public Hangman(List<Vocab> vocabWords): base("Hangman", "This game is hangman. You are given a random word. You guess leters until you get the word. You can guess 6 wrong letters before you loose. It is worth 50 points", 50, vocabWords){}
     public override int Run()
     {
+        //The user gets 6 tries to guess letters until they guess the word. Each failed letter guess wil result in a part of the hangman being displayed
+        //If they get the word before the 6 guesss, they will be rewarded points
         int attemptsLeft = 6;
         bool wordGuessed = false;
         Vocab HangManWord = GetAVocabWord();

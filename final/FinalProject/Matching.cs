@@ -2,6 +2,7 @@ class Matching : Activity
 {
     public Matching(List<Vocab> vocabWords): base("Matching", "In this activity you will be given 5 words along with 5 definitions at random. You are to match the words to their definition. It is worth 100 points", 100, vocabWords){}
     public override int Run()
+    // The user is given 5 words and 5 deffinitons. They are prompted to match the right deffinition to each word. If they get 1 wrong, they fail and return to the main menu
     {   
         Console.Clear();
         bool completed = true;

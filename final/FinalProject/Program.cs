@@ -4,6 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
+        //These are the set vocab words to practice with. They can be change. I chose easy words to make testing the program go faster
         Vocab happy = new Vocab("Happy", "Feeling or showing pleasure or contentment.");
         Vocab sad = new Vocab ("Sad", "Feeling or showing sorrow; unhappy.");
         Vocab big = new Vocab ("Big", "Of considerable size or extent.");
@@ -13,9 +14,10 @@ class Program
 
         List<Activity> activities = new List<Activity>{new Flashcard(vocabWords), new Matching(vocabWords), new Hangman(vocabWords)};
         PointTracker openTracker = new PointTracker(); 
+        
         while(true)
         {
-            //Main menu and character displays
+            //Main menu displays and the character's equpied items displays
             openTracker.DisplayCharacter();
             Console.WriteLine("Menu options:");
             Console.WriteLine(" 1. Show Vocab Words and Phrases");
@@ -31,6 +33,7 @@ class Program
             string userChoice = Console.ReadLine();
 
             if(userChoice == "1")   //Show Words selected
+            //Each vocab word with the deffinition will be displayed, the user will have to hit enter to return the the menu
             {   
                 Console.Clear();
                 activities[1].DisplayWords();
@@ -39,7 +42,9 @@ class Program
                 Console.ReadLine();
                 Console.Clear();
             }
+
             else if(userChoice == "2")  //Show Activities selected
+            // All 3 activites with their exaplination and points will be displayed. The user will have to push enter to return to the menu
             {
                 Console.Clear();
                 foreach(Activity a in activities)
@@ -52,7 +57,9 @@ class Program
                 Console.ReadLine();
                 Console.Clear();
             }
+            
             else if(userChoice == "3")  //Do an Activity selected
+            //The user will pick between flashcars, match, and hangman activites
             {  
                 Console.Clear();
                 int i = 1;
@@ -95,30 +102,43 @@ class Program
             }
             
             else if(userChoice == "4")  //Buy Items selected
+            //The user will be taken to a shop menu where the items in the shop will be dislayed and the user can spend points to get any item
             {
+                
                 openTracker.BuyItems();
             }
+            
             else if(userChoice == "5")  //Veiw Inventory selected
+            //The user will be taken to their characters inventory menu. There they can change their name, see their items, and equip different items
             {
                 openTracker.VeiwInentory();
             }
+            
             else if(userChoice == "6")  //Add a word Selected.
+            //The user will be taken to the change words menu. There they can add or remove single words, or create a new set of words all together
             {
                 activities[1].ChangeWords();
             }
+            
             else if(userChoice == "7")  //Save selected
+            //The user can save their character info to a file
             {
                 openTracker.Save();
             }
+
             else if(userChoice == "8")  //Load selected
+            //The user can load their character info from a file
             {
                 openTracker.Load();
             }
+            
             else if(userChoice == "9")  //Quit selected
+            //The program ends
             {
                 break;
             }
-            else
+            
+            else    // A layer of stress proofing if the user put in a wrong input
             {
                 Console.WriteLine("That was not a valid option, please pick a number between 1 and 9");
             }

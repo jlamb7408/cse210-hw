@@ -1,0 +1,7 @@
+23400| ONE WITH THE FORCE
+SG| Finish Code| Complete the current code I am writting| 10000| True
+EG| Scirpture Study| Read the BOM everyday| 200
+SG| Goal Test| Check of this goal to see if the program is working| 500| True
+CG| Checklist goal| complete this goal 3 times| 500| True| 3| 3| 500
+EG| Mega Points| Complete this goal to get 1000 points| 1000
+CG| CG with B| This checklist goal will now have a bonus| 100| True| 2| 2| 10000

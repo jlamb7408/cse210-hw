@@ -31,9 +31,17 @@ class Goal
     //Since each goal completion is handled differently, it is virtual
     public virtual int Completion()
     {
-        Console.WriteLine($"You have completed this goal! You will be rewarded {_points} points\n");
-        _completed = true;
-        return _points;
+        if(_completed)
+        {
+            Console.WriteLine("You have already completed this goal");
+            return 0;
+        }
+        else
+        {
+            Console.WriteLine($"You have completed this goal! You will be rewarded {_points} points\n");
+            _completed = true;
+            return _points;
+        }
     }
    
     //This method will display a goal and the progress of that goal. Again, sicne each goal ways to be completed this also is virtual

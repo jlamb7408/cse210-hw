@@ -2,6 +2,7 @@ class Flashcard: Activity
 {
     public Flashcard(List<Vocab> vocabWords): base("FlashCards", "In this activity you will be given a single definition at random and you write the word that goes to that definition. It is worth 20 points", 20, vocabWords){}
     public override int Run()
+    //The user is given a deffintion and has to type the word that goes with it. If they do, they are reqarded points
     {
         Console.Clear();
         Vocab Word = GetAVocabWord();
