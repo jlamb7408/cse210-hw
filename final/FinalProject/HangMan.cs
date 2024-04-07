@@ -2,12 +2,12 @@ using System.Diagnostics;
 
 class Hangman : Activity
 {
-    public Hangman(): base("Hangman", "This game is hangman. You are given a random word. You guess leters until you get the word. You can guess 6 wrong letters before you loose. It is worth 50 points", 50){}
+    public Hangman(List<Vocab> vocabWords): base("Hangman", "This game is hangman. You are given a random word. You guess leters until you get the word. You can guess 6 wrong letters before you loose. It is worth 50 points", 50, vocabWords){}
     public override int Run()
     {
         int attemptsLeft = 6;
         bool wordGuessed = false;
-        Vocab HangManWord = GetVocabWord();
+        Vocab HangManWord = GetAVocabWord();
         string hangManWord = HangManWord.GetWord().ToLower();
         char[] guessedWord = new char[hangManWord.Length];
         for (int i = 0; i < hangManWord.Length; i++)
@@ -133,7 +133,9 @@ class Hangman : Activity
 
         if (wordGuessed)
         {
+            Console.Clear();
             Console.WriteLine("Congratulations! You guessed the word: " + hangManWord);
+            return base.Run();
         }
         else
         {
@@ -147,7 +149,7 @@ class Hangman : Activity
             Console.WriteLine("        |");
             Console.WriteLine("============");
             Console.WriteLine("Sorry, you ran out of attempts. The word was: " + hangManWord);
+            return 0;
         }
-        return base.Run();
     }
 }

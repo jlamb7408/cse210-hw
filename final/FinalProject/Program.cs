@@ -4,30 +4,53 @@ class Program
 {
     static void Main(string[] args)
     {
-        List<Activity> activities = new List<Activity>{new Flashcard(), new Matching(), new Hangman()};
+        Vocab happy = new Vocab("Happy", "Feeling or showing pleasure or contentment.");
+        Vocab sad = new Vocab ("Sad", "Feeling or showing sorrow; unhappy.");
+        Vocab big = new Vocab ("Big", "Of considerable size or extent.");
+        Vocab small = new Vocab ("Small", "Of a size that is less than normal or usual.");
+        Vocab fast = new Vocab ("Fast", "Moving or able to move quickly.");
+        List<Vocab> vocabWords = new List<Vocab>{happy,sad, big, small, fast};
+
+        List<Activity> activities = new List<Activity>{new Flashcard(vocabWords), new Matching(vocabWords), new Hangman(vocabWords)};
+        PointTracker openTracker = new PointTracker(); 
         while(true)
         {
-            //Main menu displays
-            //For the first checkpoint, only option 3 works, and in option 3, only Hangman and Flashcard works
+            //Main menu and character displays
+            openTracker.DisplayCharacter();
             Console.WriteLine("Menu options:");
             Console.WriteLine(" 1. Show Vocab Words and Phrases");
             Console.WriteLine(" 2. Show Activites");
             Console.WriteLine(" 3. Do an Activity");
             Console.WriteLine(" 4. Buy Items");
             Console.WriteLine(" 5. Veiw Inventory");
-            Console.WriteLine(" 6. Add a word");
-            Console.WriteLine(" 7. Remove a word");
-            Console.WriteLine(" 8. quit");
+            Console.WriteLine(" 6. Change Words");
+            Console.WriteLine(" 7. Save");
+            Console.WriteLine(" 8. Load");
+            Console.WriteLine(" 9. quit");
             Console.WriteLine("Select a choice from the menu: ");
             string userChoice = Console.ReadLine();
 
             if(userChoice == "1")   //Show Words selected
             {   
-              
+                Console.Clear();
+                activities[1].DisplayWords();
+                Console.WriteLine();
+                Console.WriteLine("Push Enter to return to the menu:");
+                Console.ReadLine();
+                Console.Clear();
             }
             else if(userChoice == "2")  //Show Activities selected
             {
-    
+                Console.Clear();
+                foreach(Activity a in activities)
+                {
+                    a.DisplayActivity();
+                    Console.WriteLine();
+                }
+                Console.WriteLine();
+                Console.WriteLine("Push Enter to return to the menu:");
+                Console.ReadLine();
+                Console.Clear();
             }
             else if(userChoice == "3")  //Do an Activity selected
             {  
@@ -50,15 +73,15 @@ class Program
                 {
                     if (userPickedActivity == 1)
                     {
-                        activities[0].Run();
+                        openTracker.AddPoints(activities[0].Run());
                     }
                     else if (userPickedActivity == 2)
                     {
-                        activities[1].Run();
+                        openTracker.AddPoints(activities[1].Run());
                     }
                     else if (userPickedActivity == 3)
                     {
-                        activities[2].Run();
+                        openTracker.AddPoints(activities[2].Run());
                     }
                     else
                     {
@@ -73,23 +96,31 @@ class Program
             
             else if(userChoice == "4")  //Buy Items selected
             {
+                openTracker.BuyItems();
             }
             else if(userChoice == "5")  //Veiw Inventory selected
             {
+                openTracker.VeiwInentory();
             }
             else if(userChoice == "6")  //Add a word Selected.
             {
+                activities[1].ChangeWords();
             }
-            else if(userChoice == "7")  //Remove a word Selected.
+            else if(userChoice == "7")  //Save selected
             {
+                openTracker.Save();
             }
-            else if(userChoice == "8")  //Quit selected
+            else if(userChoice == "8")  //Load selected
+            {
+                openTracker.Load();
+            }
+            else if(userChoice == "9")  //Quit selected
             {
                 break;
             }
             else
             {
-
+                Console.WriteLine("That was not a valid option, please pick a number between 1 and 9");
             }
         }
     }

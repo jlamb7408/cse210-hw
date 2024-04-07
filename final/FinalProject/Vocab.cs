@@ -19,4 +19,5 @@ class Vocab
     {
         Console.WriteLine(_word + ": " + _definition);
     }
+    
 }
